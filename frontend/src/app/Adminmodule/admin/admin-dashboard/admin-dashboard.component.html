@@ -1,0 +1,19 @@
+
+<app-navbar  ></app-navbar>
+
+<div class="container py-5 text-center">
+  <h2 class="mb-4">Welcome ODS Admin</h2>
+
+  <!-- Buttons for Manage Agent and Manage Restaurant -->
+  <div class="d-flex justify-content-center gap-3 mb-5">
+    <button class="btn btn-primary btn-lg" (click)="navigateTo('create-agent')">Add Agent</button>
+    <button class="btn btn-secondary btn-lg" (click)="navigateTo('manage-restaurant')">Add Restaurant</button>
+    <button class="btn btn-primary btn-lg" (click)="navigateTo('agent')">View Agents</button>
+    <button class="btn btn-secondary btn-lg" (click)="showRestaurants()">View Restaurants</button>
+
+
+  </div>
+
+  <!-- Logout Button -->
+  <button class="btn btn-danger btn-lg mt-5" (click)="logout()">Logout</button>
+</div>

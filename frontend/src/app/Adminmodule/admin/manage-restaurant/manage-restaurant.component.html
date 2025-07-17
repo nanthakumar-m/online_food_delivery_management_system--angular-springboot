@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+
+   <section class="intro vh-100 bg-white">
+    <div class="d-flex align-items-center justify-content-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6">
+            <div class="card form-card shadow-xxl animate__animated animate__fadeIn">
+              <div class="card-body p-5 text-white">
+                <h2 class="mb-4 text-center fw-bold text-white">
+                  {{ formMode === 'register' ? 'Register Restaurant' : 'Update Restaurant' }}
+                </h2>
+  
+                <form [formGroup]="restaurantRegisterForm" (ngSubmit)="onSubmit()">
+                  <div class="mb-3">
+                    <label for="restaurantName" class="form-label">Restaurant Name</label>
+                    <input type="text" id="restaurantName" class="form-control" formControlName="restaurantName">
+                    <div *ngIf="restaurantRegisterForm.get('restaurantName')?.invalid && restaurantRegisterForm.get('restaurantName')?.touched" class="text-danger">
+                      Restaurant name is required.
+                    </div>
+                  </div>
+  
+                  <div class="mb-3">
+                    <label for="restaurantEmail" class="form-label">Email</label>
+                    <input type="email" id="restaurantEmail" class="form-control" formControlName="restaurantEmail">
+                    <div *ngIf="restaurantRegisterForm.get('restaurantEmail')?.invalid && restaurantRegisterForm.get('restaurantEmail')?.touched" class="text-danger">
+                      Enter a valid email.
+                    </div>
+                  </div>
+  
+                  <div class="mb-3" *ngIf="formMode === 'register'">
+                    <label for="restaurantPassword" class="form-label">Password</label>
+                    <input type="password" id="restaurantPassword" class="form-control" formControlName="restaurantPassword">
+                    <div *ngIf="restaurantRegisterForm.get('restaurantPassword')?.invalid && restaurantRegisterForm.get('restaurantPassword')?.touched" class="text-danger">
+                      Password must be at least 6 characters.
+                    </div>
+                  </div>
+                  
+  
+                  <div class="mb-4">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" id="location" class="form-control" formControlName="location">
+                    <div *ngIf="restaurantRegisterForm.get('location')?.invalid && restaurantRegisterForm.get('location')?.touched" class="text-danger">
+                      Location is required.
+                    </div>
+                  </div>
+  
+                  <div class="d-grid">
+                    <button type="submit" class="btn btn-danger tn-lg transition fw-bold">
+                      {{ formMode === 'register' ? 'Register' : 'Update' }}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

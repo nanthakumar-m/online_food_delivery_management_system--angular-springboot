@@ -1,0 +1,66 @@
+<app-navbar  ></app-navbar>
+
+<div class="limiter">
+    <div class="container-login">
+        <div class="wrap-login">
+            <div class="login-form-title" style="background-image: url(/assets/images/bg-05.jfif);">
+                <span class="login-form-title-1">
+                    {{formMode=='register'? 'Register Restaurant':'Update Restaurant'}}
+                </span>
+            </div>
+
+            <form class="login-form" [formGroup]="restaurantRegisterForm" (ngSubmit)="onSubmit()">
+                <div class="wrap-input">
+                    <span class="label-input">Name</span>
+                    <input class="input" formControlName="restaurantName" type="text" name="username" placeholder="Enter username">
+                    <small class="text-error" *ngIf="restaurantRegisterForm.get('restaurantName')?.touched && restaurantRegisterForm.get('restaurantName')?.invalid">Enter your Name</small>
+                    <span class="focus-input"></span>
+                </div>
+
+             
+
+                <div class="wrap-input">
+                    <span class="label-input">Location</span>
+                    <input class="input" formControlName="location" type="text" name="location" placeholder="Enter Address">
+                    <small class="text-error" *ngIf="restaurantRegisterForm.get('location')?.touched && restaurantRegisterForm.get('location')?.invalid">Enter your Address</small>
+                    <span class="focus-input"></span>
+                </div>
+
+                <div class="wrap-input " *ngIf="formMode=='register'">
+                    <span class="label-input">Email</span>
+                    <input class="input" formControlName="restaurantEmail" type="email" name="restaurantEmail" placeholder="Enter Email">
+                    <small class="text-error" *ngIf="restaurantRegisterForm.get('restaurantEmail')?.touched && restaurantRegisterForm.get('restaurantEmail')?.invalid">Enter valid email</small>
+                    <span class="focus-input"></span>
+                </div>
+
+                
+                <div class="wrap-input " *ngIf="formMode=='register'">
+                    <span class="label-input">Password</span>
+                    <input class="input" formControlName="restaurantPassword" type="password" name="restaurantPassword" placeholder="Enter password">
+                    <small class="text-error" *ngIf="restaurantRegisterForm.get('restaurantPassword')?.touched && restaurantRegisterForm.get('restaurantPassword')?.invalid">Enter valid password (minimum = 6 characters)</small>
+                    <span class="focus-input"></span>
+                </div>
+
+            
+
+                <div class="container-login-form-btn">
+                    <button type="submit" class="login-form-btn" [disabled]="restaurantRegisterForm.invalid">
+                        {{formMode==="register"?"Register":"update"}}
+
+                    </button>
+                   
+                </div>
+                <div class="redirect-login" *ngIf="formMode=='register'">
+                    <button class="redirect-login-btn" [routerLink]="['/login']">Already an User? Login</button>
+                    <button class="redirect-login-btn" [routerLink]="['/register']">Register as Customer?</button>
+                </div>
+
+                <!-- displaying change password if user is updating the details -->
+
+                <div class="redirect-login passwordBtn" *ngIf="formMode==='update'">
+                    <button class="redirect-login-btn" type="button" (click)="changePassword()">Change Password?</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

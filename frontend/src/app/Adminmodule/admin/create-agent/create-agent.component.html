@@ -1,0 +1,30 @@
+<app-navbar  ></app-navbar>
+
+<div class="page-background d-flex justify-content-center align-items-center vh-100">
+  
+<!-- Background Image in Bottom Left -->
+  <img src="assets/agent.jpg" class="bg-corner-image rounded-circle" alt="Decorative Background">
+
+  <div class="card custom-card shadow-lg p-4">
+    <div class="card-body">
+      <h2 class="card-title text-center mb-4">Create Agent</h2>
+      <form [formGroup]="createAgentForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="agentName" class="form-label">Agent Name</label>
+          <input type="text" id="agentName" class="form-control" formControlName="name">
+          <div *ngIf="createAgentForm.get('name')?.invalid && createAgentForm.get('name')?.touched" class="text-danger">
+            Agent Name is required
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="contactNumber" class="form-label">Contact Number</label>
+          <input type="text" id="contactNumber" class="form-control" formControlName="contactNumber">
+          <div *ngIf="createAgentForm.get('contactNumber')?.invalid && createAgentForm.get('contactNumber')?.touched" class="text-danger">
+            Mobile is required
+          </div>
+        </div>
+        <button type="submit" class="btn btn-orange w-100">Create Agent</button>
+      </form>
+    </div>
+  </div>
+</div>

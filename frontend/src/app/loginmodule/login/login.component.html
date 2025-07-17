@@ -1,0 +1,53 @@
+<app-navbar  ></app-navbar>
+
+<div class="limiter">
+    <div class="container-login">
+        <div class="wrap-login">
+            <div class="login-form-title" style="background-image: url(/assets/images/bg-05.jfif);">
+                <span class="login-form-title-1">
+                    Sign In
+                </span>
+            </div>
+
+            <form [formGroup]="loginForm" class="login-form" (ngSubmit)="onSubmit()">
+
+                <div class="roles">
+                    <input type="radio" formControlName="role" id="admin" name="role" value="admin">
+                    <label for="html" class="radio-label">Admin</label><br>
+                    <input type="radio" formControlName="role" id="customer" name="role" checked value="customer">
+                    <label for="css" class="radio-label">Customer</label><br>
+                    <input type="radio" formControlName="role" id="restaurant" name="role" value="restaurant">
+                    <label for="javascript" class="radio-label">Restaurant</label>
+                </div>
+                <div class="wrap-input">
+                    <span class="label-input">User Email</span>
+                    <input class="input" formControlName="email"  type="email"  placeholder= 'Email is required'>
+                    <small class="text-error" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">Enter a valid email</small>
+                    <span class="focus-input"></span>
+                </div>
+
+                <div class="wrap-input ">
+                    <span class="label-input">Password</span>
+                    <input class="input" formControlName="password" type="password"  placeholder="Enter Password">
+                    <small class="text-error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">Enter your password</small>
+                    <span class="focus-input"></span>
+                </div>
+
+                
+
+                <div class="container-login-form-btn">
+                    <button type="submit" class="login-form-btn" [disabled]="loginForm.invalid" >
+                        Login
+                    </button>
+                   
+                </div>
+                <div class="redirect-regiter">
+                    <button type="button" class="redirect-regiter-btn" [routerLink]="['/register']">Create a new Account? Register</button>
+                </div>
+             
+
+
+            </form>
+        </div>
+    </div>
+</div>

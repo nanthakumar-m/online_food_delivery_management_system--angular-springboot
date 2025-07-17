@@ -1,0 +1,45 @@
+.progress-tracker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    position: relative;
+  }
+   
+  .progress-step {
+    text-align: center;
+    flex: 1;
+    position: relative;
+  }
+   
+  .progress-step .circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ddd;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    font-weight: bold;
+  }
+   
+  .progress-step .circle.active {
+    background-color: orange;
+  }
+   
+  .progress-step .circle.completed {
+    background-color: green;
+  }
+   
+  .progress-step p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+  }
+   
+  .progress-step p.active {
+    font-weight: bold;
+    color: #000;
+  }

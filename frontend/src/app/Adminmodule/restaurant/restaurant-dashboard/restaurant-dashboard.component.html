@@ -1,0 +1,15 @@
+<app-navbar  ></app-navbar>
+
+<div class="container py-5 text-center">
+  <h2 class="mb-4">Welcome Restaurant Owner</h2>
+
+  <!-- Buttons for Menu Management and Orders -->
+  <div class="d-flex justify-content-center gap-3 mb-5">
+    <button class="btn btn-primary btn-lg" (click)="navigateTo('view-menu')">View All Menu</button>
+    <button class="btn btn-secondary btn-lg" (click)="navigateTo('Add-Menu')">Add Menu Menu</button>
+    <button class="btn btn-secondary btn-lg" (click)="navigateTo('orders')">View Orders</button>
+  </div>
+
+  <!-- Logout Button -->
+  <button class="btn btn-danger btn-lg mt-5" (click)="logout()">Logout</button>
+</div>

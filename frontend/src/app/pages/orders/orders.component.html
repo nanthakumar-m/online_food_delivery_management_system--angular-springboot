@@ -1,0 +1,57 @@
+<app-navbar  ></app-navbar>
+
+<div class="container py-5">
+  <h2 class="text-center mb-4">Your Orders</h2>
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead class="table-light">
+        <tr>
+          <th scope="col">Accepted Time</th>
+          <th scope="col">Order Status</th>
+          <th scope="col">Payment Amount</th>
+          <th scope="col">Payment Status</th>
+          <th>Delivery Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order.orderAcceptedTime | date : "medium" }}</td>
+          <td>
+            <span
+              class="badge"
+              [ngClass]="{
+                'bg-danger': order.orderStatus === 'not confirmed',
+                'bg-warning text-dark': order.orderStatus === 'Pending',
+                'bg-info': order.orderStatus === 'Accepted',
+                'bg-primary': order.orderStatus === 'Preparing',
+                'bg-success': order.orderStatus === 'Delivered'
+              }"
+            >
+              {{ order.orderStatus }}
+            </span>
+          </td>
+          <td>{{ order.payment?.totalAmount | currency : "INR" }}</td>
+          <td>
+            <span
+              class="badge"
+              [ngClass]="{
+                'bg-success': order.payment?.paymentStatus === 'success',
+                'bg-danger': order.payment?.paymentStatus === 'failed'
+              }"
+            >
+              {{ order.payment?.paymentStatus }}
+            </span>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              (click)="redirectToDelivery(order.orderId)"
+            >
+              Track Delivery
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

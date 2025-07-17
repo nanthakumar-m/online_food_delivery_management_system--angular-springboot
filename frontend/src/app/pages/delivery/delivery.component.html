@@ -1,0 +1,20 @@
+<app-navbar  ></app-navbar>
+
+<div class="container py-5">
+  <h2 class="text-center mb-4">Delivery Tracking</h2>
+  <p class="text-center">Order ID: {{ orderId }}</p>
+  <p class="text-center fw-bold">Current Status: {{ deliveryStatus }}</p>
+
+  <div class="progress-tracker">
+    <div class="progress-step" *ngFor="let status of statuses; let i = index">
+      <div
+        class="circle"
+        [class.active]="i <= getStatusIndex()"
+        [class.completed]="i < getStatusIndex()"
+      >
+        {{ i + 1 }}
+      </div>
+      <p [class.active]="i <= getStatusIndex()">{{ status }}</p>
+    </div>
+  </div>
+</div>

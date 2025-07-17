@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+
+<div class="container py-5">
+  <h2 class="text-center mb-4">Menu Items</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let item of menuItems">
+      <div class="card">
+        <img
+          [src]="'assets/images/menuItems/' + item.imageName + '.jfif'"
+          class="card-img-top"
+          alt="Menu Item"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ item.itemName }}</h5>
+          <p class="card-text">{{ item.description }}</p>
+          <p class="card-text fw-bold">
+            Price: {{ item.price | currency : "INR" }}
+          </p>
+          <button class="btn btn-primary w-100 mt-3" (click)="addToCart(item)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

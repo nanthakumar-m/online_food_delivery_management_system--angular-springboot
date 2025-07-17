@@ -1,0 +1,67 @@
+.hero {
+    min-height: 80vh;
+    background-color: #f8f9fa;
+}
+
+.hero h1 {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.hero img {
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+    animation: moveUpDown 3s ease-in-out infinite; 
+}
+
+.how-it-works {
+    background: linear-gradient(to bottom, #fff, #fdeada);
+  }
+  
+  .how-it-works h2 {
+    color: #ff7f00; /* Orange color */
+  }
+  
+  .icon-box {
+    text-align: center;
+  }
+  
+  .icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-color: #ff7f00; 
+    color: #000; 
+  }
+  
+  .icon i {
+    font-size: 2rem;
+  }
+  
+  .text-orange {
+    color: #ff7f00;
+  }
+
+@keyframes moveUpDown {
+    0%, 100% {
+        transform: translateY(0); 
+    }
+    50% {
+        transform: translateY(-15px); 
+    }
+}
+
+img{
+  height: 200px;
+
+}

@@ -1,0 +1,56 @@
+
+<app-navbar  ></app-navbar>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+<section class="bg-orange text-dark min-vh-100 d-flex align-items-center">
+    <img src="assets/agent.jpg" class="bg-corner-image rounded-circle" alt="Decorative Background">
+
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 offset-lg-1 col-md-12">
+        <div class="card shadow-lg">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h2 class="mb-0">Agent Management</h2>
+              <div class="d-flex ms-auto w-70 justify-content-end gap-3">
+                <div class="add-agent">
+                  <button class="btn btn-orange" [routerLink]="['/create-agent']">
+                    <i class="bi bi-plus-circle me-1"></i> Add Agent
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table ">
+                <thead class="table-sm fw-boldnm,r">
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Contact Number</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let agent of agents">
+                    <td>{{ agent.agentId }}</td>
+                    <td>{{ agent.name }}</td>
+                    <td>{{ agent.contactNumber }}</td>
+                    <td>{{ agent.status }}</td>
+                    <td>
+                      <button class="btn btn-sm btn-danger justify-content-center" (click)="deleteRestaurant(agent.agentId)">
+                        <i class="bi bi-trash justify-content-center"></i> Delete
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div> <!-- table-responsive -->
+          </div> <!-- card-body -->
+        </div> <!-- card -->
+      </div> <!-- col-12 -->
+    </div> <!-- row -->
+  </div> <!-- container -->
+</section>

@@ -1,0 +1,52 @@
+.page-background {
+    background: linear-gradient(135deg, #ffb347, #ffcc33);
+  }
+  
+  .custom-card {
+    width: 100%;
+    max-width: 500px;
+    background-color: #fff;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .custom-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-orange {
+    background-color: #ff8800;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-orange:hover {
+    background-color: #e67300;
+  }
+  
+  .card-img-top {
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .page-background {
+    background: linear-gradient(135deg, #ffb347, #ffcc33);
+    overflow: hidden;
+  }
+  
+  .bg-corner-image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 250px;
+    opacity: 50%;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+  }
+  
+  .bg-corner-image:hover {
+    transform: scale(1.05);
+  }
+  

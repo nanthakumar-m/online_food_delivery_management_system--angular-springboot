@@ -1,0 +1,78 @@
+<app-navbar  ></app-navbar>
+
+<section id="restaurants-preview" class="restaurants-preview py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-4">Featured Restaurants</h2>
+
+    <!-- Search and Filter Section -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      
+      <div class="input-group w-50">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by Restaurant Name!"
+          [(ngModel)]="searchQuery"
+          (input)="filterRestaurants()"
+        />
+      </div>
+
+      <!-- Filter -->
+      <div class="dropdown">
+        <button
+          class="btn btn-outline-secondary dropdown-toggle"
+          type="button"
+          id="locationDropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          {{ selectedLocation || 'Filter by Location' }}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="locationDropdown">
+          <li>
+            <a
+              class="dropdown-item cursor-pointer"
+              
+              *ngFor="let location of uniqueLocations"
+              (click)="filterByLocation(location)"
+            >
+              {{ location }}
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item text-danger" (click)="clearFilter()">Clear Filter</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Restaurants List -->
+    <div class="row">
+      <div
+        class="col-lg-3 col-md-6 mb-4"
+        *ngFor="let restaurant of filteredRestaurants; let i=index"
+      >
+        <div class="card shadow-lg border-0">
+          <img
+          [src]="'assets/images/Media (' + (i+1) + ').jfif'"
+          class="card-img-top rounded-top img-fluid object-fit-cover"
+          alt="Restaurant Image"
+          />
+          <div class="card-body text-center">
+            <h5 class="card-title fw-bold">{{ restaurant.restaurantName }}</h5>
+            <p class="card-text text-muted">{{ restaurant.location }}</p>
+            <div class="d-flex justify-content-center gap-3">
+              <button class="btn btn-outline-secondary">Details</button>
+              <button
+                class="btn btn-dark"
+                (click)="redirectToMenu(restaurant.restaurantId)"
+              >
+                See Menu
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

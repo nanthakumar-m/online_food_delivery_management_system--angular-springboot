@@ -1,0 +1,30 @@
+html,
+body,
+.intro {
+  height: 100%;
+}
+.bg-image {
+  background: url('/assets/res admin-bg.jpg');
+  background-size:400px; 
+  opacity: 100%;
+  }
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card {
+  border-radius: .5rem;
+}
+.btn-orange {
+  background-color: #ff8800;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-orange:hover {
+  background-color: #e67300;
+}

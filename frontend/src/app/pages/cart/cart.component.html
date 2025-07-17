@@ -1,0 +1,38 @@
+<app-navbar  ></app-navbar>
+
+<div class="container py-5">
+  <h2 class="text-center mb-4">Your Cart</h2>
+  <div *ngIf="cartItems.length > 0; else emptyCart">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <!-- Cart Items -->
+        <div *ngFor="let item of cartItems; let i = index" class="card mb-3 shadow-sm">
+          <div class="card-body d-flex justify-content-between align-items-center">
+            <div>
+              <h5 class="card-title">{{ item.itemName }}</h5>
+              <p class="card-text text-muted">{{ item.description }}</p>
+              <p class="card-text fw-bold">Price: {{ item.price | currency:'INR' }}</p>
+              <p class="card-text fw-bold">Total: {{ item.quantity * item.price | currency:'INR' }}</p>
+            </div>
+            <div class="d-flex align-items-center">
+              <!-- Quantity Counter -->
+              <button class="btn btn-outline-secondary btn-sm" (click)="decreaseQuantity(i)">-</button>
+              <span class="mx-2">{{ item.quantity }}</span>
+              <button class="btn btn-outline-secondary btn-sm" (click)="increaseQuantity(i)">+</button>
+            </div>
+            <!-- Delete Button -->
+            <button class="btn btn-danger btn-sm ms-3" (click)="deleteItem(i)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Total Price and Checkout Button -->
+    <div class="text-end mt-4">
+      <h4>Total Price: {{ calculateTotalPrice() | currency:'INR' }}</h4>
+      <button class="btn btn-success btn-lg mt-3" (click)="checkoutCart()">Checkout Cart</button>
+    </div>
+  </div>
+  <ng-template #emptyCart>
+    <p class="text-center text-muted">Your cart is empty.</p>
+  </ng-template>
+</div>

@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white p-4 shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">HaveIt<span class="text-danger">.</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link active fw-bold"
+            aria-current="page"
+            href="#"
+            (click)="redirectToHome(); $event.preventDefault()"
+          >
+            Home
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="role=='customer'" >
+          <a class="nav-link fw-bold" href="#restaurants-preview" (click)="scrollToSection('restaurants-preview') ">Restaurants</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn() && role=='customer'" >
+          <a class="nav-link fw-bold" href="#" (click)="redirectToOrders(); $event.preventDefault()">Orders</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="#footer" *ngIf="role=='customer'" (click)="scrollToSection('footer')">Contact</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="d-flex align-items-center" >
+      <!-- Cart Icon -->
+      <div *ngIf="isLoggedIn() && role=='customer'"  class="me-3">
+        <a href="#" (click)="redirectToCart(); $event.preventDefault()" class="btn btn-light">
+          <i class="bi bi-basket3-fill fs-4"></i>
+        </a>
+      </div>
+
+      <!-- User Dropdown -->
+      <div *ngIf="isLoggedIn(); else loginButton" class="d-flex align-items-center">
+        <div class="dropdown">
+          <a
+            class="btn btn-light dropdown-toggle"
+            href="#"
+            role="button"
+            id="userDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-person-circle fs-4"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item"*ngIf="role!='admin'" (click)="redirectToeditProfile()">Edit Profile</a></li>
+            <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+      <ng-template #loginButton>
+        <a class="btn btn-danger fw-bold ms-lg-3" href="/login">Login</a>
+      </ng-template>
+    </div>
+  </div>
+</nav>
+
+<div class="marquee-container" *ngIf="role=='customer'">
+  <marquee class="marquee-text">
+    Place order more than ₹99 and get <span class="highlight">Free delivery</span>!
+  </marquee>
+</div>

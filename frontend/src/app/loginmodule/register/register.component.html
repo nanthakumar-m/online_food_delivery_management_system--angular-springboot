@@ -1,0 +1,75 @@
+<app-navbar  ></app-navbar>
+
+<div class="limiter">
+    <div class="container-login">
+        <div class="wrap-login">
+            <div class="login-form-title" style="background-image: url(/assets/images/bg-05.jfif);">
+                <span class="login-form-title-1">
+                    {{formMode==="register"?"register":"Update user"}}
+                </span>
+            </div>
+
+            <form class="login-form" [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
+                <div class="wrap-input">
+                    <span class="label-input">Name</span>
+                        <input class="input" formControlName="name" type="text" name="username" placeholder="Enter username">
+                    <small class="text-error" *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">Enter your Name</small>
+                    <span class="focus-input"></span>
+                </div>
+
+                <div class="wrap-input">
+                    <span class="label-input">Phone</span>
+                    <input class="input" formControlName="phone" type="number" name="phone" placeholder="Enter mobile number" autocomplete="off">
+                    <small class="text-error" *ngIf="registerForm.get('phone')?.touched && registerForm.get('phone')?.invalid">Enter valid mobile number</small>
+                    <span class="focus-input"></span>
+                </div>
+
+                <div class="wrap-input">
+                    <span class="label-input">Address</span>
+                    <input class="input" formControlName="address" type="text" name="address" placeholder="Enter Address">
+                    <small class="text-error" *ngIf="registerForm.get('address')?.touched && registerForm.get('address')?.invalid">Enter your Address</small>
+                    <span class="focus-input"></span>
+                </div>
+
+                <!-- not including the email and password field if it is update -->
+
+                <div class="wrap-input " *ngIf="formMode==='register'">
+                    <span class="label-input" >Email</span>
+                    <input class="input"  formControlName="email" type="email" name="email" placeholder="Enter Email">
+                    <small class="text-error"  *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">Enter valid email</small>
+                    <span class="focus-input"></span>
+                </div>
+
+                
+                <div class="wrap-input " *ngIf="formMode==='register'">
+                    <span class="label-input">Password</span>
+                    <input class="input" formControlName="password" type="password" name="pass" placeholder="Enter password">
+                    <small class="text-error" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">Enter valid password (minimum = 6 characters)</small>
+                    <span class="focus-input"></span>
+                </div>
+
+            
+
+                <div class="container-login-form-btn">
+                    <button type="submit" class="login-form-btn" [disabled]="registerForm.invalid">
+                        {{formMode==="register"?"Register":"update"}}
+                    </button>
+                   
+                </div>
+
+                <!--displaying login only when user register   -->
+                <div class="redirect-login" *ngIf="formMode==='register'">
+                    <button class="redirect-login-btn" type="button" [routerLink]="['/login']">Already an User? Login</button>
+                    <button class="redirect-login-btn" type="button" [routerLink]="['/restaurant-register']">Register your restaurant?</button>
+                </div>
+
+                <!-- displaying change password if user is updating the details -->
+
+                <div class="redirect-login passwordBtn" *ngIf="formMode==='update'">
+                    <button class="redirect-login-btn" type="button" (click)="changePassword()">Change Password?</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

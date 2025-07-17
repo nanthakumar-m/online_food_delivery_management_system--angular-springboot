@@ -1,0 +1,112 @@
+<app-navbar  ></app-navbar>
+
+<!-- Hero Section -->
+<section id="hero" class="hero d-flex align-items-center py-6 bg-light">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Left Content -->
+      <div class="col-lg-6 text-center text-lg-start">
+        <h1 class="display-4 fw-bold">Enjoy Your Healthy <br> Delicious Food</h1>
+        <p class="lead text-muted">Discover the best restaurants near you and enjoy delicious meals delivered to your doorstep.</p>
+        <div class="d-flex justify-content-center justify-content-lg-start mt-4">
+          <!-- Conditional Buttons -->
+          <div *ngIf="!isLoggedIn(); else loggedInButtons" class="d-flex gap-3">
+            <a class="btn btn-danger btn-lg" href="#" (click)="redirectToLogin(); $event.preventDefault()">Login & HaveIt <span class="bi bi-fork-knife"></span></a>
+            <a class="btn btn-outline-dark btn-lg" href="#" (click)="redirectToRegister(); $event.preventDefault()">Register  <span class="bi bi-arrow-up-right-circle-fill"></span></a>
+          </div>
+          <ng-template #loggedInButtons>
+            <!-- Empty template to maintain alignment -->
+             <p class="text-lg fs-4 fw-semibold">Scroll Down <span class="bi bi-arrow-down-circle-fill"></span></p>
+          </ng-template>
+        </div>
+      </div>
+      <!-- Right Image -->
+      <div class="col-lg-6 text-center">
+        <img src="assets/hero-img.png" alt="Delicious Food" class="img-fluid rounded">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- How It Works Section -->
+<section id="how-it-works" class="how-it-works py-5 bg-light">
+  <div class="container text-center">
+    <h2 class="fw-bold text-orange mb-5">How does it work</h2>
+    <div class="row gy-4">
+      <!-- Step 1 -->
+      <div class="col-lg-3 col-md-6">
+        <div class="icon-box">
+          <div class="icon bg-orange text-dark mb-3">
+            <i class="bi bi-geo-alt-fill fs-1"></i>
+          </div>
+          <h5 class="fw-bold">Select location</h5>
+          <p>Choose the location where your food will be delivered.</p>
+        </div>
+      </div>
+      <!-- Step 2 -->
+      <div class="col-lg-3 col-md-6">
+        <div class="icon-box">
+          <div class="icon bg-orange text-dark mb-3">
+            <i class="bi bi-card-list fs-1"></i>
+          </div>
+          <h5 class="fw-bold">Choose order</h5>
+          <p>Check over hundreds of menus to pick your favorite food.</p>
+        </div>
+      </div>
+      <!-- Step 3 -->
+      <div class="col-lg-3 col-md-6">
+        <div class="icon-box">
+          <div class="icon bg-orange text-dark mb-3">
+            <i class="bi bi-cash-stack fs-1"></i>
+          </div>
+          <h5 class="fw-bold">Pay advanced</h5>
+          <p>It's quick, safe, and simple. Select several methods of payment.</p>
+        </div>
+      </div>
+      <!-- Step 4 -->
+      <div class="col-lg-3 col-md-6">
+        <div class="icon-box">
+          <div class="icon bg-orange text-dark mb-3">
+            <i class="bi bi-bag-check-fill fs-1"></i>
+          </div>
+          <h5 class="fw-bold">Enjoy meals</h5>
+          <p>Food is made and delivered directly to your home.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Restaurants Preview Section -->
+<section id="restaurants-preview" class="restaurants-preview py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-4">Featured Restaurants</h2>
+    <div class="row">
+      <div class="col-lg-3 col-md-6 mb-4" *ngFor="let restaurant of firstEightRestaurants; let i=index">
+        <div class="card shadow-lg border-0">
+          <!-- Display the same image for all restaurants -->
+          <img 
+          [src]="'assets/images/Media (' + (i+1) + ').jfif'"
+          class="card-img-top rounded-top" alt="Restaurant Image">
+          <div class="card-body text-center">
+            <!-- Display restaurant name -->
+            <h5 class="card-title fw-bold">{{ restaurant.restaurantName }}</h5>
+            <!-- Display description -->
+            <p class="card-text text-muted">{{ restaurant.location }}</p>
+            <div class="d-flex justify-content-center gap-3">
+              <button class="btn btn-outline-secondary">Details</button>
+              <button class="btn btn-dark" (click)="redirectToMenu(restaurant.restaurantId)">See Menu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Add View All Restaurants Button -->
+    <div class="text-center mt-4">
+      <a routerLink="/restaurants" class="btn btn-danger btn-lg">View All Restaurants</a>
+    </div>
+  </div>
+</section>
+
+
