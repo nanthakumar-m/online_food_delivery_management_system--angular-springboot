@@ -116,3 +116,11 @@ and track their delivery status and restaurants can register themselves and show
 
 ## 📸 Screenshots
 
+
+![admin manage-restaurant](https://github.com/user-attachments/assets/987647e7-c411-4828-bc55-c8f74280e66f)
+![admin -dashboard](https://github.com/user-attachments/assets/9b5bc088-3b13-4aec-817e-8997d75d1520)
+<img width="938" height="502" alt="cart-1" src="https://github.com/user-attachments/assets/8e10e0b2-090c-42a0-9c33-b13412c83d4f" />
+![admin view -agents](https://github.com/user-attachments/assets/ea906e9e-4552-4304-9f7e-cfb19ee5e25a)
+
+
+
